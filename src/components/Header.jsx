@@ -1,18 +1,19 @@
-import { useLocation } from 'preact-iso';
+import { useLocation } from "preact-iso";
+import "../styles/header.css";
 
 export function Header() {
-	const { url } = useLocation();
+  const { url } = useLocation();
 
-	return (
-		<header>
-			<nav>
-				<a href="/" class={url == '/' && 'active'}>
-					Home
-				</a>
-				<a href="/404" class={url == '/404' && 'active'}>
-					404
-				</a>
-			</nav>
-		</header>
-	);
+  return (
+    <header>
+      <nav>
+        <a href="/" class={url == "/" && "active"}>
+          Home
+        </a>
+        <a href="/collections" class={url == "/collections" && "active"}>
+          My Collections
+        </a>
+      </nav>
+    </header>
+  );
 }

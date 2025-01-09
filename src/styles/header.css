@@ -1,0 +1,19 @@
+header {
+  padding: 20px;
+  border-bottom: 2px solid #aaaaaa;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+header nav a {
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
