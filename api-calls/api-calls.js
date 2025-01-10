@@ -6,9 +6,12 @@ const artic = axios.create({
 
 export function getArtworks() {
   return artic
-    .get(
-      "/artworks/search?query[term][is_public_domain]=true&fields=id,title,image_id,date_start,date_end,artist_title,thumbnail.alt_text"
-    )
+    .get("/artworks/search", {
+      params: {
+        "query[term][is_public_domain]": true,
+        fields: "id,title,image_id,artist_title,thumbnail.alt_text",
+      },
+    })
     .then((response) => response.data)
     .catch((error) => console.error(error));
 }
