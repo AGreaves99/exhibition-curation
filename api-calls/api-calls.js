@@ -7,8 +7,20 @@ const artic = axios.create({
 export function getArtworks() {
   return artic
     .get(
-      "/artworks/search?query[term][is_public_domain]=true&from=10&size=10&fields=id,title,image_id,date_start,date_end,artist_title,thumbnail.alt_text,dimensions,medium_display"
+      "/artworks/search?query[term][is_public_domain]=true&fields=id,title,image_id,date_start,date_end,artist_title,thumbnail.alt_text"
     )
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+}
+
+export function getSingleArtwork(art_id) {
+  return artic
+    .get("/artworks/{art_id}", {
+      params: {
+        fields:
+          "id,title,image_id,date_start,date_end,artist_title,thumbnail.alt_text,dimensions,medium_display",
+      },
+    })
     .then((response) => response.data)
     .catch((error) => console.error(error));
 }
