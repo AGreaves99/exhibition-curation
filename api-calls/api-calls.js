@@ -18,7 +18,7 @@ export function getSingleArtwork(art_id) {
     .get("/artworks/{art_id}", {
       params: {
         fields:
-          "id,title,image_id,date_start,date_end,artist_title,thumbnail.alt_text,dimensions,medium_display",
+          "id,title,image_id,date_start,date_end,artist_title,thumbnail,dimensions,medium_display",
       },
     })
     .then((response) => response.data)
