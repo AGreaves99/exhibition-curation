@@ -1,0 +1,45 @@
+.artwork-card {
+  max-width: 15vw;
+  min-width: 300px;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, scale 0.3s ease;
+  border-radius: 8px;
+}
+
+.artwork-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  scale: 1.05;
+}
+
+.artwork-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 1em;
+}
+
+.artwork-title {
+  padding-top: 1em;
+  font-size: 1.25em;
+  margin: 0;
+  color: #222;
+  width: 100%;
+  font-weight: 400;
+}
+
+.artwork-artist {
+  font-size: 1em;
+  color: #777;
+}
+
+.artwork-list {
+  margin-inline: 10vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
