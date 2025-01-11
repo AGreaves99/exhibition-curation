@@ -2,9 +2,15 @@ import { useLocation } from "preact-iso";
 
 export function ItemsPerPage() {
   const location = useLocation();
+  const params = new URLSearchParams(location.query);
   function handleChange(event) {
     const itemsPerPage = event.target.value;
-    location.route("/?limit=" + itemsPerPage);
+    if (itemsPerPage === "10") {
+      params.delete("limit");
+    } else {
+      params.set("limit", itemsPerPage);
+    }
+    location.route("/?" + params.toString());
   }
   return (
     <form class="items-per-page-container">
