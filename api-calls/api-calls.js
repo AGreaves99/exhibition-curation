@@ -4,13 +4,14 @@ const artic = axios.create({
   baseURL: "https://api.artic.edu/api/v1",
 });
 
-export function getArtworks(limit) {
+export function getArtworks(limit = "10", search = "") {
   return artic
     .get("/artworks/search", {
       params: {
         "query[term][is_public_domain]": true,
         fields: "id,title,image_id,artist_title,thumbnail.alt_text",
         size: limit,
+        q: search,
       },
     })
     .then((response) => response.data)
