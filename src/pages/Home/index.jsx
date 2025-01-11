@@ -4,6 +4,7 @@ import { ArtworkCard } from "../../components/ArtworkCard";
 import "../../styles/artworkCard.css";
 import { ItemsPerPage } from "../../components/ItemsPerPage";
 import { useLocation } from "preact-iso";
+import { SearchBox } from "../../components/SearchBox";
 
 export function Home() {
   const { query } = useLocation();
@@ -14,7 +15,7 @@ export function Home() {
     pagination: {},
   });
   useEffect(() => {
-    getArtworks(query.limit || 10).then((data) => {
+    getArtworks(query.limit, query.search).then((data) => {
       setArtworksData(data);
     });
   }, [query]);
@@ -27,7 +28,7 @@ export function Home() {
         artist={artwork.artist_title}
         image_id={artwork.image_id}
         iiif_url={artworksData.config.iiif_url}
-        alt_text={artwork.thumbnail.alt_text}
+        alt_text={artwork.thumbnail?.alt_text || artwork.title}
       />
     );
   });
@@ -35,6 +36,7 @@ export function Home() {
   return (
     <>
       <ItemsPerPage />
+      <SearchBox />
       <ul class="artwork-list"> {ArtworkCards} </ul>
     </>
   );
