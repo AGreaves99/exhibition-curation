@@ -2,8 +2,11 @@ import { useEffect, useState } from "preact/hooks";
 import { getArtworks } from "../../../api-calls/api-calls";
 import { ArtworkCard } from "../../components/ArtworkCard";
 import "../../styles/artworkCard.css";
+import { ItemsPerPage } from "../../components/ItemsPerPage";
+import { useLocation } from "preact-iso";
 
 export function Home() {
+  const { query } = useLocation();
   const [artworksData, setArtworksData] = useState({
     config: {},
     data: [],
@@ -11,11 +14,10 @@ export function Home() {
     pagination: {},
   });
   useEffect(() => {
-    getArtworks().then((data) => {
+    getArtworks(query.limit || 10).then((data) => {
       setArtworksData(data);
-      console.log(data);
     });
-  }, []);
+  }, [query]);
 
   const ArtworkCards = artworksData.data.map((artwork) => {
     return (
@@ -30,5 +32,10 @@ export function Home() {
     );
   });
 
-  return <ul class="artwork-list"> {ArtworkCards} </ul>;
+  return (
+    <>
+      <ItemsPerPage />
+      <ul class="artwork-list"> {ArtworkCards} </ul>
+    </>
+  );
 }
