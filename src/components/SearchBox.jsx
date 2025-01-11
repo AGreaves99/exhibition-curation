@@ -3,14 +3,20 @@ import { useState } from "preact/hooks";
 
 export function SearchBox() {
   const location = useLocation();
-  const [query, setQuery] = useState("");
+  const params = new URLSearchParams(location.query);
+  const [query, setQuery] = useState(location.query.search || "");
 
   function handleChange(event) {
     setQuery(event.target.value);
   }
 
   function handleSearch() {
-    location.route("/?search=" + query);
+    if (query === "") {
+      params.delete("search");
+    } else {
+      params.set("search", query);
+    }
+    location.route("/?" + params.toString());
   }
 
   return (
