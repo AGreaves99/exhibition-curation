@@ -28,7 +28,7 @@ export function Home() {
         artist={artwork.artist_title}
         image_id={artwork.image_id}
         iiif_url={artworksData.config.iiif_url}
-        alt_text={artwork.thumbnail.alt_text}
+        alt_text={artwork.thumbnail?.alt_text || artwork.title}
       />
     );
   });
