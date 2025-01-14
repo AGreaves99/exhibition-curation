@@ -5,6 +5,7 @@ import "../../styles/artworkCard.css";
 import { ItemsPerPage } from "../../components/ItemsPerPage";
 import { useLocation } from "preact-iso";
 import { SearchBox } from "../../components/SearchBox";
+import { SortArtworks } from "../../components/SortDropdown";
 
 export function Home() {
   const { query } = useLocation();
@@ -15,7 +16,7 @@ export function Home() {
     pagination: {},
   });
   useEffect(() => {
-    getArtworks(query.limit, query.search).then((data) => {
+    getArtworks(query.limit, query.search, query.sort_by).then((data) => {
       setArtworksData(data);
     });
   }, [query]);
@@ -37,6 +38,7 @@ export function Home() {
     <>
       <ItemsPerPage />
       <SearchBox />
+      <SortArtworks />
       <ul class="artwork-list"> {ArtworkCards} </ul>
     </>
   );
