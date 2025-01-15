@@ -44,14 +44,14 @@ export function getSingleArtwork(art_id) {
       return {
         title: data.data.title,
         artist: data.data.artist_title,
-        image_id: data.data.image_id,
-        iiif_url: data.config.iiif_url,
-        alt_text: data.data.thumbnail?.alt_text || data.data.title,
+        imageId: data.data.image_id,
+        iiifUrl: data.config.iiif_url,
+        altText: data.data.thumbnail?.alt_text || data.data.title,
         dimensions: data.data.dimensions,
         medium: data.data.medium_display,
-        short_description: data.data.short_description,
-        date_start: data.data.date_start,
-        date_end: data.data.date_end,
+        shortDescription: data.data.short_description,
+        dateStart: data.data.date_start,
+        dateEnd: data.data.date_end,
       };
     })
     .catch((error) => console.error(error));
