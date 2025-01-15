@@ -2,6 +2,7 @@ import { useRoute } from "preact-iso";
 import { useEffect, useState } from "preact/hooks";
 import { getSingleArtwork } from "../../api-calls/api-calls";
 import "../styles/singleArtwork.css";
+import { AddToCollection } from "../components/AddToCollection";
 
 export function SingleArtwork() {
   const { params } = useRoute();
@@ -49,6 +50,7 @@ export function SingleArtwork() {
         Dimensions: {artworkData.dimensions}
       </p>
       <p class="single-artwork-medium">Medium: {artworkData.medium}</p>
+      <AddToCollection artworkId={params.id} />
     </div>
   );
 }
