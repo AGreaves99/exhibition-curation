@@ -8,14 +8,14 @@ export function SingleArtwork() {
   const [artworkData, setArtworkData] = useState({
     title: "",
     artist: "",
-    image_id: "",
-    iiif_url: "",
-    alt_text: "",
+    imageId: "",
+    iiifUrl: "",
+    altText: "",
     dimensions: "",
     medium: "",
-    short_description: "",
-    date_start: "",
-    date_end: "",
+    shortDescription: "",
+    dateStart: "",
+    dateEnd: "",
   });
 
   useEffect(() => {
@@ -29,21 +29,21 @@ export function SingleArtwork() {
       <img
         class="single-artwork-image"
         src={
-          artworkData.image_id &&
-          `${artworkData.iiif_url}/${artworkData.image_id}/full/843,/0/default.jpg`
+          artworkData.imageId &&
+          `${artworkData.iiifUrl}/${artworkData.imageId}/full/843,/0/default.jpg`
         }
-        alt={artworkData.alt_text || artworkData.title}
+        alt={artworkData.altText || artworkData.title}
       />
       <h1 class="single-artwork-title">{artworkData.title}</h1>
       <p class="single-artwork-description">
-        Description: {artworkData.short_description}
+        Description: {artworkData.shortDescription}
       </p>
       <p class="single-artwork-artist">Artist: {artworkData.artist}</p>
       <p class="single-artwork-date">
         Date:{" "}
-        {artworkData.date_start === artworkData.date_end
-          ? artworkData.date_start
-          : `${artworkData.date_start} - ${artworkData.date_end}`}
+        {artworkData.dateStart === artworkData.dateEnd
+          ? artworkData.dateStart
+          : `${artworkData.dateStart} - ${artworkData.dateEnd}`}
       </p>
       <p class="single-artwork-dimensions">
         Dimensions: {artworkData.dimensions}
