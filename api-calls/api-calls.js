@@ -34,12 +34,25 @@ export function getArtworks(limit = "10", search = null, sort = null) {
 
 export function getSingleArtwork(art_id) {
   return artic
-    .get("/artworks/{art_id}", {
+    .get(`/artworks/${art_id}`, {
       params: {
         fields:
-          "id,title,image_id,date_start,date_end,artist_title,thumbnail,dimensions,medium_display",
+          "title,image_id,date_start,date_end,artist_title,thumbnail,dimensions,medium_display,short_description",
       },
     })
-    .then((response) => response.data)
+    .then(({ data }) => {
+      return {
+        title: data.data.title,
+        artist: data.data.artist_title,
+        image_id: data.data.image_id,
+        iiif_url: data.config.iiif_url,
+        alt_text: data.data.thumbnail?.alt_text || data.data.title,
+        dimensions: data.data.dimensions,
+        medium: data.data.medium_display,
+        short_description: data.data.short_description,
+        date_start: data.data.date_start,
+        date_end: data.data.date_end,
+      };
+    })
     .catch((error) => console.error(error));
 }
