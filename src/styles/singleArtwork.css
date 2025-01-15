@@ -1,0 +1,27 @@
+.single-artwork-container {
+  max-width: 843px;
+  margin: 5em auto;
+  color: #222;
+}
+
+.single-artwork-title {
+  font-size: 2em;
+  margin-bottom: 1em;
+  font-weight: 700;
+}
+
+.single-artwork-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: none;
+}
+
+.single-artwork-container > p {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.single-artwork-artist {
+  font-weight: bold;
+}
