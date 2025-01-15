@@ -1,11 +1,11 @@
 import { useEffect, useState } from "preact/hooks";
-import { getArtworks } from "../../../api-calls/api-calls";
-import { ArtworkCard } from "../../components/ArtworkCard";
-import "../../styles/artworkCard.css";
-import { ItemsPerPage } from "../../components/ItemsPerPage";
+import { getArtworks } from "../../api-calls/api-calls";
+import { ArtworkCard } from "../components/ArtworkCard";
+import "../styles/artworkCard.css";
+import { ItemsPerPage } from "../components/ItemsPerPage";
 import { useLocation } from "preact-iso";
-import { SearchBox } from "../../components/SearchBox";
-import { SortArtworks } from "../../components/SortDropdown";
+import { SearchBox } from "../components/SearchBox";
+import { SortArtworks } from "../components/SortDropdown";
 
 export function Home() {
   const { query } = useLocation();
@@ -25,6 +25,7 @@ export function Home() {
     return (
       <ArtworkCard
         key={artwork.id}
+        id={artwork.id}
         title={artwork.title}
         artist={artwork.artist_title}
         image_id={artwork.image_id}
