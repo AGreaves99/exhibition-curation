@@ -6,10 +6,6 @@ export function AddToCollection({ artworkId }) {
 
   const handleAddToCollection = () => {
     addToCollection(selectedCollection, artworkId);
-    console.log(
-      `Added artwork ${artworkId} to collection ${selectedCollection}`
-    );
-    console.log(userCollections.value);
   };
 
   return (
