@@ -56,3 +56,24 @@ export function getSingleArtwork(art_id) {
     })
     .catch((error) => console.error(error));
 }
+
+export function getCollectionArtworks(idArray = null) {
+  if (!idArray?.length) {
+    return Promise.resolve({
+      data: [],
+      config: {},
+      info: {},
+      pagination: {},
+    });
+  }
+
+  return artic
+    .get("/artworks", {
+      params: {
+        ids: idArray.join(","),
+        fields: "id,title,image_id,artist_title,thumbnail.alt_text",
+      },
+    })
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+}
