@@ -1,4 +1,5 @@
 .artwork-card {
+  max-height: fit-content;
   max-width: 15vw;
   min-width: 300px;
   padding: 20px;
@@ -6,10 +7,15 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, scale 0.3s ease;
   border-radius: 8px;
   text-decoration: none;
+  transition: box-shadow 0.3s ease, scale 0.3s ease;
+}
+
+.artwork-link {
+  text-decoration: none;
   color: inherit;
+  display: block;
 }
 
 .artwork-card:hover {
@@ -19,14 +25,17 @@
 
 .artwork-image {
   width: 100%;
-  height: auto;
-  display: block;
+  max-height: 450px;
+  object-fit: contain;
   border-bottom: 2px solid #ddd;
   padding-bottom: 1em;
 }
 
-.artwork-title {
+.artwork-details {
   padding-top: 1em;
+}
+
+.artwork-title {
   font-size: 1.25em;
   margin: 0;
   color: #222;
@@ -37,6 +46,10 @@
 .artwork-artist {
   font-size: 1em;
   color: #666;
+}
+
+.artwork-children {
+  margin-top: 10px;
 }
 
 .artwork-list {

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "preact/hooks";
 import { getArtworks } from "../../api-calls/api-calls";
 import { ArtworkCard } from "../components/ArtworkCard";
-import "../styles/artworkCard.css";
 import { ItemsPerPage } from "../components/ItemsPerPage";
 import { useLocation } from "preact-iso";
 import { SearchBox } from "../components/SearchBox";
 import { SortArtworks } from "../components/SortDropdown";
+import "../styles/artworkCard.css";
 
 export function Home() {
   const { query } = useLocation();
