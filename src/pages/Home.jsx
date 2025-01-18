@@ -6,9 +6,10 @@ import { useLocation } from "preact-iso";
 import { SearchBox } from "../components/SearchBox";
 import { SortArtworks } from "../components/SortDropdown";
 import "../styles/artworkCard.css";
+import { Pagination } from "../components/Pagination";
 
 export function Home() {
-  const { query } = useLocation();
+  const { limit, search, sort_by, page } = useLocation().query;
   const [artworksData, setArtworksData] = useState({
     config: {},
     data: [],
@@ -16,10 +17,10 @@ export function Home() {
     pagination: {},
   });
   useEffect(() => {
-    getArtworks(query.limit, query.search, query.sort_by).then((data) => {
+    getArtworks(limit, search, sort_by, page).then((data) => {
       setArtworksData(data);
     });
-  }, [query]);
+  }, [useLocation().query]);
 
   const ArtworkCards = artworksData.data.map((artwork) => {
     return (
@@ -41,6 +42,7 @@ export function Home() {
       <SearchBox />
       <SortArtworks />
       <ul class="artwork-list"> {ArtworkCards} </ul>
+      <Pagination totalPages={artworksData.pagination.total_pages} />
     </>
   );
 }

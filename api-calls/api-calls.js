@@ -4,7 +4,12 @@ const artic = axios.create({
   baseURL: "https://api.artic.edu/api/v1",
 });
 
-export function getArtworks(limit = "10", search = null, sort = null) {
+export function getArtworks(
+  limit = "10",
+  search = null,
+  sort = null,
+  page = 1
+) {
   const sortOptions = {
     // The API ascending and descending sort options are reversed
     "artist-desc": ["artist_title.keyword", "asc"],
@@ -22,6 +27,7 @@ export function getArtworks(limit = "10", search = null, sort = null) {
         },
         fields: "id,title,image_id,artist_title,thumbnail.alt_text,date_end",
         size: limit,
+        from: (page - 1) * Number(limit),
         q: search,
         sort: sortOptions[sort] && {
           [sortOptions[sort][0]]: sortOptions[sort][1],
