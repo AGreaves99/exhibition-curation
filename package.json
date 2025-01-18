@@ -10,7 +10,8 @@
 		"@preact/signals": "^2.0.1",
 		"axios": "^1.7.9",
 		"preact": "^10.25.3",
-		"preact-iso": "^2.8.1"
+		"preact-iso": "^2.8.1",
+		"react-responsive-pagination": "^2.10.0"
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "^2.9.3",
