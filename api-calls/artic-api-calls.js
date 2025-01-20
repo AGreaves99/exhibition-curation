@@ -94,6 +94,19 @@ export function getCollectionArtworks(idArray = null) {
         fields: "id,title,image_id,artist_title,thumbnail.alt_text",
       },
     })
-    .then((response) => response.data)
+    .then(({ data }) => {
+      return {
+        data: data.data.map((artwork) => {
+          return {
+            id: artwork.id,
+            title: artwork.title,
+            artistTitle: artwork.artist_title,
+            imageId: artwork.image_id,
+            thumbnail: artwork.thumbnail,
+          };
+        }),
+        iiifUrl: data.config.iiif_url,
+      };
+    })
     .catch((error) => console.error(error));
 }
