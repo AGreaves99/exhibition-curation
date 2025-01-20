@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { getArtworks } from "../../api-calls/api-calls";
+import { getArtworks } from "../../api-calls/artic-api-calls";
 import { ArtworkCard } from "../components/ArtworkCard";
 import { ItemsPerPage } from "../components/ItemsPerPage";
 import { useLocation } from "preact-iso";
@@ -12,10 +12,9 @@ import { SourceDropdown } from "../components/SourceDropdown";
 export function Home() {
   const { limit, search, sort_by, page } = useLocation().query;
   const [artworksData, setArtworksData] = useState({
-    config: {},
     data: [],
-    info: {},
-    pagination: {},
+    iiifUrl: "",
+    totalPages: 0,
   });
   useEffect(() => {
     getArtworks(limit, search, sort_by, page).then((data) => {
@@ -29,10 +28,10 @@ export function Home() {
         key={artwork.id}
         id={artwork.id}
         title={artwork.title}
-        artist={artwork.artist_title}
-        image_id={artwork.image_id}
-        iiif_url={artworksData.config.iiif_url}
-        alt_text={artwork.thumbnail?.alt_text || artwork.title}
+        artist={artwork.artistTitle}
+        imageId={artwork.imageId}
+        iiifUrl={artworksData.iiifUrl}
+        altText={artwork.thumbnail?.alt_text || artwork.title}
       />
     );
   });
@@ -44,7 +43,7 @@ export function Home() {
       <SearchBox />
       <SortArtworks />
       <ul class="artwork-list"> {ArtworkCards} </ul>
-      <Pagination totalPages={artworksData.pagination.total_pages} />
+      <Pagination totalPages={artworksData.totalPages} />
     </>
   );
 }
