@@ -7,6 +7,7 @@ import { SearchBox } from "../components/SearchBox";
 import { SortArtworks } from "../components/SortDropdown";
 import "../styles/artworkCard.css";
 import { Pagination } from "../components/Pagination";
+import { SourceDropdown } from "../components/SourceDropdown";
 
 export function Home() {
   const { limit, search, sort_by, page } = useLocation().query;
@@ -39,6 +40,7 @@ export function Home() {
   return (
     <>
       <ItemsPerPage />
+      <SourceDropdown />
       <SearchBox />
       <SortArtworks />
       <ul class="artwork-list"> {ArtworkCards} </ul>
