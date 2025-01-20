@@ -34,7 +34,21 @@ export function getArtworks(
         },
       },
     })
-    .then((response) => response.data)
+    .then(({ data }) => {
+      return {
+        data: data.data.map((artwork) => {
+          return {
+            id: artwork.id,
+            title: artwork.title,
+            artistTitle: artwork.artist_title,
+            imageId: artwork.image_id,
+            thumbnail: artwork.thumbnail,
+          };
+        }),
+        iiifUrl: data.config.iiif_url,
+        totalPages: data.pagination.total_pages,
+      };
+    })
     .catch((error) => console.error(error));
 }
 
