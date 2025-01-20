@@ -1,7 +1,7 @@
 import { useEffect, useState } from "preact/hooks";
 import { userCollections } from "../../collectionSignal";
 import { CollectionSidebar } from "../components/CollectionSidebar";
-import { getCollectionArtworks } from "../../api-calls/api-calls";
+import { getCollectionArtworks } from "../../api-calls/artic-api-calls";
 import { ArtworkCard } from "../components/ArtworkCard";
 import "../styles/collections.css";
 import { RemoveButton } from "../components/RemoveButton";
@@ -11,10 +11,8 @@ export function Collections() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(0);
   const [artworksData, setArtworksData] = useState({
-    config: {},
     data: [],
-    info: {},
-    pagination: {},
+    iiifUrl: "",
   });
 
   useEffect(() => {
@@ -31,10 +29,10 @@ export function Collections() {
         key={artwork.id}
         id={artwork.id}
         title={artwork.title}
-        artist={artwork.artist_title}
-        image_id={artwork.image_id}
-        iiif_url={artworksData.config.iiif_url}
-        alt_text={artwork.thumbnail?.alt_text || artwork.title}
+        artist={artwork.artistTitle}
+        imageId={artwork.imageId}
+        iiifUrl={artworksData.iiifUrl}
+        altText={artwork.thumbnail?.alt_text || artwork.title}
       >
         <RemoveButton
           artworkId={artwork.id}
