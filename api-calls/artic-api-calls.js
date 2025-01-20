@@ -81,9 +81,7 @@ export function getCollectionArtworks(idArray = null) {
   if (!idArray?.length) {
     return Promise.resolve({
       data: [],
-      config: {},
-      info: {},
-      pagination: {},
+      iiifUrl: "",
     });
   }
 
