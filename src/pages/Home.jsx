@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { getArtworks } from "../../api-calls/artic-api-calls";
+import { getArticArtworks } from "../../api-calls/artic-api-calls";
 import { ArtworkCard } from "../components/ArtworkCard";
 import { ItemsPerPage } from "../components/ItemsPerPage";
 import { useLocation } from "preact-iso";
@@ -16,7 +16,7 @@ export function Home() {
     totalPages: 0,
   });
   useEffect(() => {
-    getArtworks(limit, search, sort_by, page).then((data) => {
+    getArticArtworks(limit, search, sort_by, page).then((data) => {
       setArtworksData(data);
     });
   }, [useLocation().query]);
