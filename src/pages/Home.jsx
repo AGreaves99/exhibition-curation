@@ -17,15 +17,10 @@ export function Home() {
     totalPages: 0,
   });
   useEffect(() => {
-    if (source === "smk") {
-      getSmkArtworks(limit, search, sort_by, page).then((data) => {
-        setArtworksData(data);
-      });
-    } else {
-      getArticArtworks(limit, search, sort_by, page).then((data) => {
-        setArtworksData(data);
-      });
-    }
+    const fetchArtworks = source === "smk" ? getSmkArtworks : getArticArtworks;
+    fetchArtworks(limit, search, sort_by, page).then((data) => {
+      setArtworksData(data);
+    });
   }, [useLocation().query]);
 
   const ArtworkCards = artworksData.data.map((artwork) => {

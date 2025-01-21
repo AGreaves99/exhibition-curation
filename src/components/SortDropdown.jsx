@@ -3,8 +3,6 @@ import { useLocation } from "preact-iso";
 export function SortArtworks() {
   const location = useLocation();
   const sorts = {
-    "artist-desc": "Artist (A-Z)",
-    "artist-asc": "Artist (Z-A)",
     "title-desc": "Title (A-Z)",
     "title-asc": "Title (Z-A)",
     "date-asc": "Date (newest)",
