@@ -30,7 +30,7 @@ export function Home() {
         artist={artwork.artistTitle}
         hasImage={artwork.hasImage}
         iiifUrl={artwork.iiifUrl}
-        altText={artwork.thumbnail?.alt_text || artwork.title}
+        altText={artwork.altText}
       />
     );
   });

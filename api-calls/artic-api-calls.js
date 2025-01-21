@@ -42,7 +42,7 @@ export function getArticArtworks(
             title: artwork.title,
             artistTitle: artwork.artist_title,
             hasImage: !!artwork.image_id,
-            thumbnail: artwork.thumbnail,
+            altText: data.data.thumbnail?.alt_text || data.data.title,
             iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
           };
         }),
@@ -100,6 +100,7 @@ export function getArticCollectionArtworks(idArray = null) {
             artistTitle: artwork.artist_title,
             hasImage: !!artwork.image_id,
             thumbnail: artwork.thumbnail,
+            altText: artwork.thumbnail?.alt_text || data.data.title,
             iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
           };
         }),
