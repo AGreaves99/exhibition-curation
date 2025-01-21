@@ -10,28 +10,25 @@ import { ShowSidebarButton } from "../components/ShowSidebarButton";
 export function Collections() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(0);
-  const [artworksData, setArtworksData] = useState({
-    data: [],
-    iiifUrl: "",
-  });
+  const [artworksData, setArtworksData] = useState([]);
 
   useEffect(() => {
     getCollectionArtworks(
       userCollections.value[selectedCollection]?.artworks
     ).then((data) => {
-      setArtworksData(data);
+      setArtworksData(data.data);
     });
   }, [selectedCollection]);
 
-  const ArtworkCards = artworksData.data.map((artwork) => {
+  const ArtworkCards = artworksData.map((artwork) => {
     return (
       <ArtworkCard
         key={artwork.id}
         id={artwork.id}
         title={artwork.title}
         artist={artwork.artistTitle}
-        imageId={artwork.imageId}
-        iiifUrl={artworksData.iiifUrl}
+        hasImage={artwork.hasImage}
+        iiifUrl={artwork.iiifUrl}
         altText={artwork.thumbnail?.alt_text || artwork.title}
       >
         <RemoveButton

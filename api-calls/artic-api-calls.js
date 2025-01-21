@@ -81,7 +81,6 @@ export function getCollectionArtworks(idArray = null) {
   if (!idArray?.length) {
     return Promise.resolve({
       data: [],
-      iiifUrl: "",
     });
   }
 
@@ -99,11 +98,11 @@ export function getCollectionArtworks(idArray = null) {
             id: artwork.id,
             title: artwork.title,
             artistTitle: artwork.artist_title,
-            imageId: artwork.image_id,
+            hasImage: !!artwork.image_id,
             thumbnail: artwork.thumbnail,
+            iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
           };
         }),
-        iiifUrl: data.config.iiif_url,
       };
     })
     .catch((error) => console.error(error));
