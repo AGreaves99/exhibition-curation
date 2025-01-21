@@ -13,7 +13,6 @@ export function Home() {
   const { limit, search, sort_by, page } = useLocation().query;
   const [artworksData, setArtworksData] = useState({
     data: [],
-    iiifUrl: "",
     totalPages: 0,
   });
   useEffect(() => {
@@ -29,8 +28,8 @@ export function Home() {
         id={artwork.id}
         title={artwork.title}
         artist={artwork.artistTitle}
-        imageId={artwork.imageId}
-        iiifUrl={artworksData.iiifUrl}
+        hasImage={artwork.hasImage}
+        iiifUrl={artwork.iiifUrl}
         altText={artwork.thumbnail?.alt_text || artwork.title}
       />
     );

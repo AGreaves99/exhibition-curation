@@ -4,7 +4,7 @@ export function ArtworkCard({
   id,
   title,
   artist,
-  imageId,
+  hasImage,
   altText,
   iiifUrl,
   children,
@@ -13,7 +13,7 @@ export function ArtworkCard({
     <div className="artwork-card">
       <a href={`/artic/${id}`} className="artwork-link">
         <img
-          src={imageId && `${iiifUrl}/${imageId}/full/400,/0/default.jpg`}
+          src={hasImage && `${iiifUrl}/full/400,/0/default.jpg`}
           alt={altText}
           className="artwork-image"
         />
