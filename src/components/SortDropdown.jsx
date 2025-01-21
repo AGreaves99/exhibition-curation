@@ -30,7 +30,7 @@ export function SortArtworks() {
         onInput={handleSortChange}
         value={location.query.sort_by || ""}
       >
-        <option value={""}>--Sort By--</option>
+        <option value={""}>Relevance</option>
         {Object.keys(sorts).map((key) => (
           <option key={key} value={key}>
             {sorts[key][0].toUpperCase() + sorts[key].slice(1)}
