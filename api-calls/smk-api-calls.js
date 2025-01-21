@@ -35,12 +35,12 @@ export function getSmkArtworks(
               artwork.titles[1] ? `, ${artwork.titles[1].title}` : ""
             }`,
             artistTitle: artwork.artist[0],
-            iiifUrl: artwork.image_iiif_id,
             hasImage: artwork.has_image,
+            iiifUrl: artwork.image_iiif_id,
+            altText: artwork.titles[0].title,
           };
         }),
-        iiifUrl: "",
-        totalPages: data.found,
+        totalPages: Math.ceil(data.found / Number(limit)),
       };
     })
     .catch((error) => console.error(error));

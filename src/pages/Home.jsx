@@ -8,17 +8,24 @@ import { SortArtworks } from "../components/SortDropdown";
 import "../styles/artworkCard.css";
 import { Pagination } from "../components/Pagination";
 import { SourceDropdown } from "../components/SourceDropdown";
+import { getSmkArtworks } from "../../api-calls/smk-api-calls";
 
 export function Home() {
-  const { limit, search, sort_by, page } = useLocation().query;
+  const { limit, search, sort_by, page, source } = useLocation().query;
   const [artworksData, setArtworksData] = useState({
     data: [],
     totalPages: 0,
   });
   useEffect(() => {
-    getArticArtworks(limit, search, sort_by, page).then((data) => {
-      setArtworksData(data);
-    });
+    if (source === "smk") {
+      getSmkArtworks(limit, search, sort_by, page).then((data) => {
+        setArtworksData(data);
+      });
+    } else {
+      getArticArtworks(limit, search, sort_by, page).then((data) => {
+        setArtworksData(data);
+      });
+    }
   }, [useLocation().query]);
 
   const ArtworkCards = artworksData.data.map((artwork) => {
@@ -31,6 +38,7 @@ export function Home() {
         hasImage={artwork.hasImage}
         iiifUrl={artwork.iiifUrl}
         altText={artwork.altText}
+        source={source}
       />
     );
   });
