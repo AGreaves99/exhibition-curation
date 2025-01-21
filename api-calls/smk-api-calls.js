@@ -11,10 +11,10 @@ export function getSmkArtworks(
   page = 1
 ) {
   const sortOptions = {
-    "title-desc": ["title", "desc"],
-    "title-asc": ["title", "asc"],
-    "date-desc": ["date", "desc"],
-    "date-asc": ["date", "asc"],
+    "title-desc": ["titles", "desc"],
+    "title-asc": ["titles", "asc"],
+    "date-desc": ["production_dates_end", "desc"],
+    "date-asc": ["production_dates_end", "asc"],
   };
   return smk
     .get("/art/search", {
@@ -23,21 +23,23 @@ export function getSmkArtworks(
         filters: "[public_domain:true]",
         offset: (page - 1) * Number(limit),
         rows: limit,
+        sort: sortOptions[sort] && sortOptions[sort][0],
+        sort_type: sortOptions[sort] && sortOptions[sort][1],
         lang: "en",
       },
     })
     .then(({ data }) => {
       return {
         data: data.items.map((artwork) => {
+          const title1 = artwork?.titles?.[0]?.title || "No title";
+          const title2 = artwork?.titles?.[1]?.title || "";
           return {
             id: artwork.object_number,
-            title: `${artwork.titles[0].title}${
-              artwork.titles[1] ? `, ${artwork.titles[1].title}` : ""
-            }`,
-            artistTitle: artwork.artist[0],
+            title: `${title1}${title2 ? `, ${title2}` : ""}`,
+            artistTitle: artwork?.artist?.[0] || "Unknown Artist",
             hasImage: artwork.has_image,
             iiifUrl: artwork.image_iiif_id,
-            altText: artwork.titles[0].title,
+            altText: `${title1}${title2 ? `, ${title2}` : ""}`,
           };
         }),
         totalPages: Math.ceil(data.found / Number(limit)),
