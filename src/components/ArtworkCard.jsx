@@ -7,7 +7,7 @@ export function ArtworkCard({
   hasImage,
   altText,
   iiifUrl,
-  source,
+  source = "artic",
   children,
 }) {
   return (
