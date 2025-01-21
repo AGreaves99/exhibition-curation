@@ -64,8 +64,8 @@ export function getArticSingleArtwork(art_id) {
       return {
         title: data.data.title,
         artist: data.data.artist_title,
-        imageId: data.data.image_id,
-        iiifUrl: data.config.iiif_url,
+        hasImage: !!data.data.image_id,
+        iiifUrl: `${data.config.iiif_url}/${data.data.image_id}`,
         altText: data.data.thumbnail?.alt_text || data.data.title,
         dimensions: data.data.dimensions,
         medium: data.data.medium_display,

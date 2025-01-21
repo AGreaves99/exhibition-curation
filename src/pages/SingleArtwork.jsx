@@ -9,7 +9,7 @@ export function SingleArtwork() {
   const [artworkData, setArtworkData] = useState({
     title: "",
     artist: "",
-    imageId: "",
+    hasImage: false,
     iiifUrl: "",
     altText: "",
     dimensions: "",
@@ -30,8 +30,8 @@ export function SingleArtwork() {
       <img
         class="single-artwork-image"
         src={
-          artworkData.imageId &&
-          `${artworkData.iiifUrl}/${artworkData.imageId}/full/843,/0/default.jpg`
+          artworkData.hasImage &&
+          `${artworkData.iiifUrl}/full/843,/0/default.jpg`
         }
         alt={artworkData.altText || artworkData.title}
       />
