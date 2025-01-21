@@ -1,6 +1,6 @@
 import { useRoute } from "preact-iso";
 import { useEffect, useState } from "preact/hooks";
-import { getSingleArtwork } from "../../api-calls/artic-api-calls";
+import { getArticSingleArtwork } from "../../api-calls/artic-api-calls";
 import "../styles/singleArtwork.css";
 import { AddToCollection } from "../components/AddToCollection";
 
@@ -20,7 +20,7 @@ export function SingleArtwork() {
   });
 
   useEffect(() => {
-    getSingleArtwork(params.id).then((data) => {
+    getArticSingleArtwork(params.id).then((data) => {
       setArtworkData(data);
     });
   }, []);

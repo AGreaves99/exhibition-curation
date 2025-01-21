@@ -4,7 +4,7 @@ const artic = axios.create({
   baseURL: "https://api.artic.edu/api/v1",
 });
 
-export function getArtworks(
+export function getArticArtworks(
   limit = "10",
   search = null,
   sort = null,
@@ -52,7 +52,7 @@ export function getArtworks(
     .catch((error) => console.error(error));
 }
 
-export function getSingleArtwork(art_id) {
+export function getArticSingleArtwork(art_id) {
   return artic
     .get(`/artworks/${art_id}`, {
       params: {
@@ -77,7 +77,7 @@ export function getSingleArtwork(art_id) {
     .catch((error) => console.error(error));
 }
 
-export function getCollectionArtworks(idArray = null) {
+export function getArticCollectionArtworks(idArray = null) {
   if (!idArray?.length) {
     return Promise.resolve({
       data: [],
