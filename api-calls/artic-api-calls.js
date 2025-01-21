@@ -41,11 +41,11 @@ export function getArtworks(
             id: artwork.id,
             title: artwork.title,
             artistTitle: artwork.artist_title,
-            imageId: artwork.image_id,
+            hasImage: !!artwork.image_id,
             thumbnail: artwork.thumbnail,
+            iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
           };
         }),
-        iiifUrl: data.config.iiif_url,
         totalPages: data.pagination.total_pages,
       };
     })
