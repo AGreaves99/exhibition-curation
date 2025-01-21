@@ -12,8 +12,6 @@ export function getArticArtworks(
 ) {
   const sortOptions = {
     // The API ascending and descending sort options are reversed
-    "artist-desc": ["artist_title.keyword", "asc"],
-    "artist-asc": ["artist_title.keyword", "desc"],
     "title-desc": ["title.keyword", "asc"],
     "title-asc": ["title.keyword", "desc"],
     "date-asc": ["date_end", "desc"],
