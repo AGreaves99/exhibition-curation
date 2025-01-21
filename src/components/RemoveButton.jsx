@@ -5,10 +5,7 @@ export function RemoveButton({ artworkId, collection, setArtworksData }) {
   function handleClick() {
     removeFromCollection(artworkId, collection);
     setArtworksData((prevData) => {
-      return {
-        ...prevData,
-        data: prevData.data.filter((artwork) => artwork.id !== artworkId),
-      };
+      return prevData.filter((artwork) => artwork.id !== artworkId);
     });
   }
   return (
