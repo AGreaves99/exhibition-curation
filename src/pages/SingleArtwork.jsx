@@ -3,9 +3,11 @@ import { useEffect, useState } from "preact/hooks";
 import { getArticSingleArtwork } from "../../api-calls/artic-api-calls";
 import "../styles/singleArtwork.css";
 import { AddToCollection } from "../components/AddToCollection";
+import { getSmkSingleArtwork } from "../../api-calls/smk-api-calls";
 
 export function SingleArtwork() {
-  const { params } = useRoute();
+  const { id, source } = useRoute().params;
+  const decodedId = decodeURIComponent(id);
   const [artworkData, setArtworkData] = useState({
     title: "",
     artist: "",
@@ -20,7 +22,9 @@ export function SingleArtwork() {
   });
 
   useEffect(() => {
-    getArticSingleArtwork(params.id).then((data) => {
+    const fetchArtwork =
+      source === "smk" ? getSmkSingleArtwork : getArticSingleArtwork;
+    fetchArtwork(decodedId).then((data) => {
       setArtworkData(data);
     });
   }, []);
@@ -36,9 +40,11 @@ export function SingleArtwork() {
         alt={artworkData.altText || artworkData.title}
       />
       <h1 class="single-artwork-title">{artworkData.title}</h1>
-      <p class="single-artwork-description">
-        Description: {artworkData.shortDescription}
-      </p>
+      {artworkData.shortDescription && (
+        <p class="single-artwork-description">
+          Description: {artworkData.shortDescription}
+        </p>
+      )}
       <p class="single-artwork-artist">Artist: {artworkData.artist}</p>
       <p class="single-artwork-date">
         Date:{" "}
@@ -50,7 +56,7 @@ export function SingleArtwork() {
         Dimensions: {artworkData.dimensions}
       </p>
       <p class="single-artwork-medium">Medium: {artworkData.medium}</p>
-      <AddToCollection artworkId={params.id} />
+      <AddToCollection artworkId={id} />
     </div>
   );
 }
