@@ -7,9 +7,10 @@ import { SortArtworks } from "../components/SortDropdown";
 import { useLocation } from "preact-iso";
 import { Pagination } from "../components/Pagination";
 import { SourceDropdown } from "../components/SourceDropdown";
-// import { ArtworkList } from "../components/ArtworkList";
+// import ArtworkList from "../components/ArtworkList";
 import "../styles/artworkCard.css";
 import { lazy, Suspense } from "preact/compat";
+import { ArtworkSkeleton } from "../components/loading-states/ArtworkCardSkeleton";
 const ArtworkList = lazy(() => import("../components/ArtworkList"));
 
 export const Home = () => {
@@ -33,7 +34,17 @@ export const Home = () => {
       <SourceDropdown />
       <SearchBox />
       <SortArtworks />
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense
+        fallback={
+          <ul class="artwork-list">
+            {Array(Number(limit) || 10)
+              .fill(0)
+              .map((_, index) => {
+                return <ArtworkSkeleton key={index} />;
+              })}
+          </ul>
+        }
+      >
         <ArtworkList
           artworks={artworksData.data}
           source={artworksData.source}
