@@ -40,7 +40,7 @@ export function getArticArtworks(
             title: artwork.title,
             artistTitle: artwork.artist_title,
             hasImage: !!artwork.image_id,
-            altText: data.data.thumbnail?.alt_text || data.data.title,
+            altText: data.data.thumbnail?.alt_text || artwork.title,
             iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
           };
         }),
@@ -87,7 +87,7 @@ export function getArticCollectionArtworks(idArray = null) {
     .get("/artworks", {
       params: {
         ids: idArray.join(","),
-        fields: "id,title,image_id,artist_title,thumbnail.alt_text",
+        fields: "id,title,image_id,artist_title,thumbnail",
       },
     })
     .then(({ data }) => {
@@ -98,12 +98,12 @@ export function getArticCollectionArtworks(idArray = null) {
             title: artwork.title,
             artistTitle: artwork.artist_title,
             hasImage: !!artwork.image_id,
-            thumbnail: artwork.thumbnail,
             altText: artwork.thumbnail?.alt_text || data.data.title,
             iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
+            source: "artic",
+            uniqueId: `artic-${artwork.id}`,
           };
         }),
-        source: "artic",
       };
     })
     .catch((error) => console.error(error));
