@@ -45,6 +45,7 @@ export function getArticArtworks(
           };
         }),
         totalPages: data.pagination.total_pages,
+        source: "artic",
       };
     })
     .catch((error) => console.error(error));
@@ -102,6 +103,7 @@ export function getArticCollectionArtworks(idArray = null) {
             iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
           };
         }),
+        source: "artic",
       };
     })
     .catch((error) => console.error(error));

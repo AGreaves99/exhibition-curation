@@ -43,6 +43,7 @@ export function getSmkArtworks(
           };
         }),
         totalPages: Math.ceil(data.found / Number(limit)),
+        source: "smk",
       };
     })
     .catch((error) => console.error(error));
