@@ -56,7 +56,7 @@ export function SingleArtwork() {
         Dimensions: {artworkData.dimensions}
       </p>
       <p class="single-artwork-medium">Medium: {artworkData.medium}</p>
-      <AddToCollection artworkId={id} />
+      <AddToCollection artworkId={id} source={source} />
     </div>
   );
 }
