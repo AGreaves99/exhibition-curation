@@ -13,9 +13,10 @@ export function Collections() {
   const [artworksData, setArtworksData] = useState([]);
 
   useEffect(() => {
-    getArticCollectionArtworks(
-      userCollections.value[selectedCollection]?.artworks
-    ).then((data) => {
+    const articArtwork = userCollections.value[selectedCollection]?.artworks
+      .filter((artwork) => artwork.source === "artic")
+      .map((artwork) => artwork.id);
+    getArticCollectionArtworks(articArtwork).then((data) => {
       setArtworksData(data.data);
     });
   }, [selectedCollection]);
@@ -29,12 +30,13 @@ export function Collections() {
         artist={artwork.artistTitle}
         hasImage={artwork.hasImage}
         iiifUrl={artwork.iiifUrl}
-        altText={artwork.thumbnail?.alt_text || artwork.title}
+        altText={artwork.altText}
+        source={artwork.source}
       >
         <RemoveButton
-          artworkId={artwork.id}
           collection={selectedCollection}
           setArtworksData={setArtworksData}
+          uniqueId={artwork.uniqueId}
         />
       </ArtworkCard>
     );
