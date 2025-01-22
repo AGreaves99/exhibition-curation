@@ -15,6 +15,7 @@ export function Home() {
   const [artworksData, setArtworksData] = useState({
     data: [],
     totalPages: 0,
+    source: "artic",
   });
   useEffect(() => {
     const fetchArtworks = source === "smk" ? getSmkArtworks : getArticArtworks;
@@ -33,7 +34,7 @@ export function Home() {
         hasImage={artwork.hasImage}
         iiifUrl={artwork.iiifUrl}
         altText={artwork.altText}
-        source={source}
+        source={artworksData.source}
       />
     );
   });

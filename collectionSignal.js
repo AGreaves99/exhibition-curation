@@ -9,25 +9,32 @@ export function newCollection(collectionName) {
   ];
 }
 
-export function addToCollection(collectionName, artworkId) {
+export function addToCollection(collectionName, source, artworkId) {
   userCollections.value = userCollections.value.map((collection) => {
     if (collection.name === collectionName) {
       return {
         ...collection,
-        artworks: [...collection.artworks, artworkId],
+        artworks: [
+          ...collection.artworks,
+          {
+            source,
+            id: artworkId,
+            uniqueId: `${source}-${artworkId}`,
+          },
+        ],
       };
     }
     return collection;
   });
 }
 
-export function removeFromCollection(artworkId, collectionIndex) {
+export function removeFromCollection(uniqueId, collectionIndex) {
   userCollections.value = userCollections.value.map((collection, index) => {
     if (index === collectionIndex) {
       return {
         ...collection,
         artworks: collection.artworks.filter(
-          (artwork) => Number(artwork) !== artworkId
+          (artwork) => artwork.uniqueId !== uniqueId
         ),
       };
     }

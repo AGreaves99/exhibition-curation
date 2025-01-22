@@ -1,11 +1,11 @@
 import { useState } from "preact/hooks";
 import { userCollections, addToCollection } from "../../collectionSignal";
 
-export function AddToCollection({ artworkId }) {
+export function AddToCollection({ artworkId, source }) {
   const [selectedCollection, setSelectedCollection] = useState("");
 
   const handleAddToCollection = () => {
-    addToCollection(selectedCollection, artworkId);
+    addToCollection(selectedCollection, source, artworkId);
   };
 
   return (
