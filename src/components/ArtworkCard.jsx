@@ -7,7 +7,7 @@ export function ArtworkCard({
   hasImage,
   altText,
   iiifUrl,
-  source = "artic",
+  source,
   children,
 }) {
   const encodedId = encodeURIComponent(id);
