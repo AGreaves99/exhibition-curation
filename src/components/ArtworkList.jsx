@@ -1,4 +1,4 @@
-import { ArtworkCard } from "./ArtworkCard";
+import ArtworkCard from "./ArtworkCard";
 import "../styles/artworkCard.css";
 
 const ArtworkList = ({ artworks, source }) => {

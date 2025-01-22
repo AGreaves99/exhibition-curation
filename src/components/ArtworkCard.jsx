@@ -1,6 +1,6 @@
 import "../styles/artworkCard.css";
 
-export const ArtworkCard = ({
+const ArtworkCard = ({
   id,
   title,
   artist,
@@ -28,3 +28,5 @@ export const ArtworkCard = ({
     </div>
   );
 };
+
+export default ArtworkCard;

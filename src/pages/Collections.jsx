@@ -2,7 +2,7 @@ import { useEffect, useState } from "preact/hooks";
 import { userCollections } from "../../collectionSignal";
 import { CollectionSidebar } from "../components/CollectionSidebar";
 import { getArticCollectionArtworks } from "../../api-calls/artic-api-calls";
-import { ArtworkCard } from "../components/ArtworkCard";
+import ArtworkCard from "../components/ArtworkCard";
 import "../styles/collections.css";
 import { RemoveButton } from "../components/RemoveButton";
 import { ShowSidebarButton } from "../components/ShowSidebarButton";
