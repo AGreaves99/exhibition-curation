@@ -14,9 +14,7 @@ export function App() {
       <main>
         <Router>
           <Route path="/" component={Home} />
-          {["artic", "smk"].map((path) => (
-            <Route key={path} path={`/${path}/:id`} component={SingleArtwork} />
-          ))}
+          <Route path="/:source/:id" component={SingleArtwork} />
           <Route path="/collections" component={Collections} />
           <Route default component={NotFound} />
         </Router>

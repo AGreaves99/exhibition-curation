@@ -50,9 +50,9 @@ export function getArticArtworks(
     .catch((error) => console.error(error));
 }
 
-export function getArticSingleArtwork(art_id) {
+export function getArticSingleArtwork(artId) {
   return artic
-    .get(`/artworks/${art_id}`, {
+    .get(`/artworks/${artId}`, {
       params: {
         fields:
           "title,image_id,date_start,date_end,artist_title,thumbnail,dimensions,medium_display,short_description",
