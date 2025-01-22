@@ -2,25 +2,25 @@ import { useState } from "preact/hooks";
 import { userCollections, newCollection } from "../../collectionSignal";
 import "../styles/collectionSidebar.css";
 
-export function CollectionSidebar({
+export const CollectionSidebar = ({
   selectedCollection,
   setSelectedCollection,
   sidebarVisible,
-}) {
+}) => {
   const [newCollectionName, setNewCollectionName] = useState("");
 
-  function addCollection() {
+  const addCollection = () => {
     newCollection(newCollectionName);
     setNewCollectionName("");
-  }
+  };
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     setNewCollectionName(event.target.value);
-  }
+  };
 
-  function selectCollection(event) {
+  const selectCollection = (event) => {
     setSelectedCollection(Number(event.target.value));
-  }
+  };
 
   return (
     <div class={`collection-sidebar ${sidebarVisible ? "visible" : ""}`}>
@@ -57,4 +57,4 @@ export function CollectionSidebar({
       </div>
     </div>
   );
-}
+};

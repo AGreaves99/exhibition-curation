@@ -1,23 +1,23 @@
 import { useLocation } from "preact-iso";
 import { useState } from "preact/hooks";
 
-export function SearchBox() {
+export const SearchBox = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.query);
   const [query, setQuery] = useState(location.query.search || "");
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     setQuery(event.target.value);
-  }
+  };
 
-  function handleSearch() {
+  const handleSearch = () => {
     if (query === "") {
       params.delete("search");
     } else {
       params.set("search", query);
     }
     location.route("/?" + params.toString());
-  }
+  };
 
   return (
     <div>
@@ -32,4 +32,4 @@ export function SearchBox() {
       <button onClick={handleSearch}>Search</button>
     </div>
   );
-}
+};

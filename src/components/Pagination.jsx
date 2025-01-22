@@ -2,13 +2,14 @@ import ResponsivePagination from "react-responsive-pagination";
 import { useLocation } from "preact-iso";
 import "../styles/pagination.css";
 
-export function Pagination({ totalPages }) {
+export const Pagination = ({ totalPages }) => {
   const location = useLocation();
   const params = new URLSearchParams(location.query);
-  function handlePageChange(page) {
+
+  const handlePageChange = (page) => {
     params.set("page", page);
     location.route("/?" + params.toString());
-  }
+  };
 
   return (
     <div class="pagination-container">
@@ -19,4 +20,4 @@ export function Pagination({ totalPages }) {
       />
     </div>
   );
-}
+};

@@ -1,7 +1,7 @@
 import { useLocation } from "preact-iso";
 import "../styles/header.css";
 
-export function Header() {
+export const Header = () => {
   const { url } = useLocation();
 
   return (
@@ -16,4 +16,4 @@ export function Header() {
       </nav>
     </header>
   );
-}
+};

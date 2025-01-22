@@ -8,7 +8,7 @@ import { RemoveButton } from "../components/RemoveButton";
 import { ShowSidebarButton } from "../components/ShowSidebarButton";
 import { getSmkCollectionArtworks } from "../../api-calls/smk-api-calls";
 
-export function Collections() {
+export const Collections = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(0);
   const [artworksData, setArtworksData] = useState([]);
@@ -21,6 +21,7 @@ export function Collections() {
   useEffect(() => {
     const articArtwork = getArtworkIdsBySource("artic");
     const smkArtwork = getArtworkIdsBySource("smk");
+
     Promise.all([
       getArticCollectionArtworks(articArtwork),
       getSmkCollectionArtworks(smkArtwork),
@@ -65,4 +66,4 @@ export function Collections() {
       <ul class="artwork-collection-list"> {ArtworkCards} </ul>
     </div>
   );
-}
+};

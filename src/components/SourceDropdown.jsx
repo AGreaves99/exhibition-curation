@@ -1,13 +1,13 @@
 import { useLocation } from "preact-iso";
 
-export function SourceDropdown() {
+export const SourceDropdown = () => {
   const location = useLocation();
   const sources = {
     artic: "Art Institute of Chicago",
     smk: "National Gallery of Denmark",
   };
 
-  function handleSourceChange(event) {
+  const handleSourceChange = (event) => {
     const sourceValue = event.target.value;
     const params = new URLSearchParams(location.query);
     if (sourceValue) {
@@ -16,7 +16,7 @@ export function SourceDropdown() {
       params.delete("source");
     }
     location.route("/?" + params.toString());
-  }
+  };
 
   return (
     <div>
@@ -36,4 +36,4 @@ export function SourceDropdown() {
       </select>
     </div>
   );
-}
+};

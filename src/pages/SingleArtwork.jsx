@@ -5,7 +5,7 @@ import "../styles/singleArtwork.css";
 import { AddToCollection } from "../components/AddToCollection";
 import { getSmkSingleArtwork } from "../../api-calls/smk-api-calls";
 
-export function SingleArtwork() {
+export const SingleArtwork = () => {
   const { id, source } = useRoute().params;
   const decodedId = decodeURIComponent(id);
   const [artworkData, setArtworkData] = useState({
@@ -59,4 +59,4 @@ export function SingleArtwork() {
       <AddToCollection artworkId={id} source={source} />
     </div>
   );
-}
+};

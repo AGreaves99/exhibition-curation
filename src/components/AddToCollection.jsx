@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks";
 import { userCollections, addToCollection } from "../../collectionSignal";
 
-export function AddToCollection({ artworkId, source }) {
+export const AddToCollection = ({ artworkId, source }) => {
   const [selectedCollection, setSelectedCollection] = useState("");
 
   const handleAddToCollection = () => {
@@ -35,4 +35,4 @@ export function AddToCollection({ artworkId, source }) {
       </button>
     </div>
   );
-}
+};
