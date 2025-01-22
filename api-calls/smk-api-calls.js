@@ -68,6 +68,7 @@ export function getSmkSingleArtwork(artId) {
       }`;
 
       return {
+        id: artwork.object_number,
         title: `${title1}${title2 ? `, ${title2}` : ""}`,
         artist: artwork?.artist?.[0] || "Unknown Artist",
         hasImage: artwork.has_image,
@@ -81,7 +82,25 @@ export function getSmkSingleArtwork(artId) {
         shortDescription: artwork?.labels?.[0].text || "",
         dateStart: artwork?.production_date?.[0].period || "",
         dateEnd: artwork?.production_date?.[0].period || "",
+        source: "smk",
+        uniqueId: `smk-${artwork.object_number}`,
       };
     })
     .catch((error) => console.error(error));
+}
+
+export function getSmkCollectionArtworks(idArray = null) {
+  if (!idArray?.length) {
+    return Promise.resolve({
+      data: [],
+    });
+  }
+  const artworkPromises = idArray.map((id) => getSmkSingleArtwork(id));
+  return Promise.all(artworkPromises).then((artworks) => {
+    console.log(artworks);
+
+    return {
+      data: artworks,
+    };
+  });
 }
