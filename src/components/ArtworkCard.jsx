@@ -10,9 +10,10 @@ export function ArtworkCard({
   source = "artic",
   children,
 }) {
+  const encodedId = encodeURIComponent(id);
   return (
     <div className="artwork-card">
-      <a href={`/${source}/${id}`} className="artwork-link">
+      <a href={`/${source}/${encodedId}`} className="artwork-link">
         <img
           src={hasImage && `${iiifUrl}/full/400,/0/default.jpg`}
           alt={altText}
