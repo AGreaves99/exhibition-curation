@@ -6,25 +6,34 @@ import { ArtworkCard } from "../components/ArtworkCard";
 import "../styles/collections.css";
 import { RemoveButton } from "../components/RemoveButton";
 import { ShowSidebarButton } from "../components/ShowSidebarButton";
+import { getSmkCollectionArtworks } from "../../api-calls/smk-api-calls";
 
 export function Collections() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(0);
   const [artworksData, setArtworksData] = useState([]);
 
-  useEffect(() => {
-    const articArtwork = userCollections.value[selectedCollection]?.artworks
-      .filter((artwork) => artwork.source === "artic")
+  const getArtworkIdsBySource = (source) =>
+    userCollections.value[selectedCollection]?.artworks
+      .filter((artwork) => artwork.source === source)
       .map((artwork) => artwork.id);
-    getArticCollectionArtworks(articArtwork).then((data) => {
-      setArtworksData(data.data);
+
+  useEffect(() => {
+    const articArtwork = getArtworkIdsBySource("artic");
+    const smkArtwork = getArtworkIdsBySource("smk");
+    Promise.all([
+      getArticCollectionArtworks(articArtwork),
+      getSmkCollectionArtworks(smkArtwork),
+    ]).then((results) => {
+      const combinedData = results.flatMap((result) => result.data);
+      setArtworksData(combinedData);
     });
   }, [selectedCollection]);
 
   const ArtworkCards = artworksData.map((artwork) => {
     return (
       <ArtworkCard
-        key={artwork.id}
+        key={artwork.uniqueId}
         id={artwork.id}
         title={artwork.title}
         artist={artwork.artistTitle}
