@@ -1,11 +1,11 @@
 import { removeFromCollection } from "../../collectionSignal";
 import "../styles/removeButton.css";
 
-export function RemoveButton({ artworkId, collection, setArtworksData }) {
+export function RemoveButton({ collection, setArtworksData, uniqueId }) {
   function handleClick() {
-    removeFromCollection(artworkId, collection);
+    removeFromCollection(uniqueId, collection);
     setArtworksData((prevData) => {
-      return prevData.filter((artwork) => artwork.id !== artworkId);
+      return prevData.filter((artwork) => artwork.uniqueId !== uniqueId);
     });
   }
   return (
