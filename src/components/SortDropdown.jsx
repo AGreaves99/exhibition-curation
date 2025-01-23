@@ -1,6 +1,6 @@
 import { useLocation } from "preact-iso";
 
-export function SortArtworks() {
+export const SortArtworks = () => {
   const location = useLocation();
   const sorts = {
     "title-desc": "Title (A-Z)",
@@ -9,7 +9,7 @@ export function SortArtworks() {
     "date-desc": "Date (oldest)",
   };
 
-  function handleSortChange(event) {
+  const handleSortChange = (event) => {
     const sortValue = event.target.value;
     const params = new URLSearchParams(location.query);
     if (sortValue) {
@@ -18,7 +18,7 @@ export function SortArtworks() {
       params.delete("sort_by");
     }
     location.route("/?" + params.toString());
-  }
+  };
 
   return (
     <div>
@@ -39,4 +39,4 @@ export function SortArtworks() {
       </select>
     </div>
   );
-}
+};

@@ -1,9 +1,10 @@
 import { useLocation } from "preact-iso";
 
-export function ItemsPerPage() {
+export const ItemsPerPage = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.query);
-  function handleChange(event) {
+
+  const handleChange = (event) => {
     const itemsPerPage = event.target.value;
     if (itemsPerPage === "10") {
       params.delete("limit");
@@ -11,7 +12,7 @@ export function ItemsPerPage() {
       params.set("limit", itemsPerPage);
     }
     location.route("/?" + params.toString());
-  }
+  };
   return (
     <form class="items-per-page-container">
       <label for="items-per-page">Items Per Page: </label>
@@ -27,4 +28,4 @@ export function ItemsPerPage() {
       </select>
     </form>
   );
-}
+};

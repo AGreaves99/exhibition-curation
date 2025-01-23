@@ -40,6 +40,7 @@ export function getSmkArtworks(
             hasImage: artwork.has_image,
             iiifUrl: artwork.image_iiif_id,
             altText: `${title1}${title2 ? `, ${title2}` : ""}`,
+            source: "smk",
           };
         }),
         totalPages: Math.ceil(data.found / Number(limit)),
@@ -97,8 +98,6 @@ export function getSmkCollectionArtworks(idArray = null) {
   }
   const artworkPromises = idArray.map((id) => getSmkSingleArtwork(id));
   return Promise.all(artworkPromises).then((artworks) => {
-    console.log(artworks);
-
     return {
       data: artworks,
     };

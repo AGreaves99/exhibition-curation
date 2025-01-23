@@ -1,6 +1,6 @@
 import "../styles/artworkCard.css";
 
-export function ArtworkCard({
+const ArtworkCard = ({
   id,
   title,
   artist,
@@ -9,7 +9,7 @@ export function ArtworkCard({
   iiifUrl,
   source,
   children,
-}) {
+}) => {
   const encodedId = encodeURIComponent(id);
   return (
     <div className="artwork-card">
@@ -27,4 +27,6 @@ export function ArtworkCard({
       <div className="artwork-children">{children}</div>
     </div>
   );
-}
+};
+
+export default ArtworkCard;
