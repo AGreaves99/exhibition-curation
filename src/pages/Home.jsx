@@ -7,7 +7,6 @@ import { SortArtworks } from "../components/SortDropdown";
 import { useLocation } from "preact-iso";
 import { Pagination } from "../components/Pagination";
 import { SourceDropdown } from "../components/SourceDropdown";
-// import ArtworkList from "../components/ArtworkList";
 import "../styles/artworkCard.css";
 import { lazy, Suspense } from "preact/compat";
 import { ArtworkSkeleton } from "../components/loading-states/ArtworkCardSkeleton";
