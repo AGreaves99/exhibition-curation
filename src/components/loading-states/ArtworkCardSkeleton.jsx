@@ -2,8 +2,8 @@ import "../../styles/artworkSkeleton.css";
 
 export const ArtworkCardSkeleton = () => (
   <div class="artwork-skeleton">
-    <div class="skeleton-image"></div>
-    <div class="skeleton-title"></div>
-    <div class="skeleton-artist"></div>
+    <img class="skeleton-image"></img>
+    <h1 class="skeleton-title"></h1>
+    <p class="skeleton-artist"></p>
   </div>
 );
