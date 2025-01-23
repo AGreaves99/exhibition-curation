@@ -36,7 +36,7 @@ export const Home = () => {
       <SortArtworks />
       <Suspense
         fallback={
-          <ul class="artwork-list">
+          <ul aria-busy="true" class="artwork-list">
             {Array(Number(limit) || 10)
               .fill(0)
               .map((_, index) => {
@@ -46,6 +46,7 @@ export const Home = () => {
         }
       >
         <ArtworkList
+          aria-busy="false"
           artworks={artworksData.data}
           source={artworksData.source}
         />
