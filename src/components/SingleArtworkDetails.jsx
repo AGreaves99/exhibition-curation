@@ -29,7 +29,7 @@ const SingleArtworkDetails = () => {
   }, []);
 
   return (
-    <div class="single-artwork-container">
+    <div aria-busy="false" class="single-artwork-container">
       <img
         class="single-artwork-image"
         src={
