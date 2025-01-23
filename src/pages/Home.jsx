@@ -43,7 +43,7 @@ export const Home = () => {
           </ul>
         }
       >
-        <ArtworkList aria-busy="false" artworks={artworksData.data} />
+        <ArtworkList artworks={artworksData.data} />
       </Suspense>
       <Pagination totalPages={artworksData.totalPages} />
     </>

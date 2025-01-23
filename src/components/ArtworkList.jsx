@@ -9,7 +9,7 @@ const ArtworkList = ({
   showButton = false,
 }) => {
   return (
-    <ul class="artwork-list">
+    <ul aria-busy="false" class="artwork-list">
       {artworks.map((artwork) => (
         <ArtworkCard
           key={artwork.id}
