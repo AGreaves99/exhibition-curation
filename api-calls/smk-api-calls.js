@@ -40,6 +40,7 @@ export function getSmkArtworks(
             hasImage: artwork.has_image,
             iiifUrl: artwork.image_iiif_id,
             altText: `${title1}${title2 ? `, ${title2}` : ""}`,
+            source: "smk",
           };
         }),
         totalPages: Math.ceil(data.found / Number(limit)),

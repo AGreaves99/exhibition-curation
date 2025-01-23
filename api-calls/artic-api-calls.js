@@ -42,6 +42,7 @@ export function getArticArtworks(
             hasImage: !!artwork.image_id,
             altText: data.data.thumbnail?.alt_text || artwork.title,
             iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
+            source: "artic",
           };
         }),
         totalPages: data.pagination.total_pages,
