@@ -17,7 +17,6 @@ export const Home = () => {
   const [artworksData, setArtworksData] = useState({
     data: [],
     totalPages: 0,
-    source: "artic",
   });
 
   useEffect(() => {
@@ -44,11 +43,7 @@ export const Home = () => {
           </ul>
         }
       >
-        <ArtworkList
-          aria-busy="false"
-          artworks={artworksData.data}
-          source={artworksData.source}
-        />
+        <ArtworkList aria-busy="false" artworks={artworksData.data} />
       </Suspense>
       <Pagination totalPages={artworksData.totalPages} />
     </>

@@ -1,7 +1,7 @@
 import ArtworkCard from "./ArtworkCard";
 import "../styles/artworkCard.css";
 
-const ArtworkList = ({ artworks, source }) => {
+const ArtworkList = ({ artworks }) => {
   return (
     <ul class="artwork-list">
       {artworks.map((artwork) => (
@@ -13,7 +13,7 @@ const ArtworkList = ({ artworks, source }) => {
           hasImage={artwork.hasImage}
           iiifUrl={artwork.iiifUrl}
           altText={artwork.altText}
-          source={source}
+          source={artwork.source}
         />
       ))}
     </ul>
