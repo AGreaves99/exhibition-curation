@@ -1,7 +1,13 @@
 import ArtworkCard from "./ArtworkCard";
 import "../styles/artworkCard.css";
+import { RemoveButton } from "./RemoveButton";
 
-const ArtworkList = ({ artworks }) => {
+const ArtworkList = ({
+  artworks = [],
+  selectedCollection,
+  setArtworksData,
+  showButton = false,
+}) => {
   return (
     <ul class="artwork-list">
       {artworks.map((artwork) => (
@@ -14,7 +20,15 @@ const ArtworkList = ({ artworks }) => {
           iiifUrl={artwork.iiifUrl}
           altText={artwork.altText}
           source={artwork.source}
-        />
+        >
+          {showButton && (
+            <RemoveButton
+              collection={selectedCollection}
+              setArtworksData={setArtworksData}
+              uniqueId={artwork.uniqueId}
+            />
+          )}
+        </ArtworkCard>
       ))}
     </ul>
   );
