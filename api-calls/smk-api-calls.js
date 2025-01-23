@@ -98,8 +98,6 @@ export function getSmkCollectionArtworks(idArray = null) {
   }
   const artworkPromises = idArray.map((id) => getSmkSingleArtwork(id));
   return Promise.all(artworkPromises).then((artworks) => {
-    console.log(artworks);
-
     return {
       data: artworks,
     };
