@@ -1,6 +1,6 @@
 import "../../styles/artworkSkeleton.css";
 
-export const ArtworkSkeleton = () => (
+export const ArtworkCardSkeleton = () => (
   <div class="artwork-skeleton">
     <div class="skeleton-image"></div>
     <div class="skeleton-title"></div>

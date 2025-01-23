@@ -9,7 +9,7 @@ import { Pagination } from "../components/Pagination";
 import { SourceDropdown } from "../components/SourceDropdown";
 import "../styles/artworkCard.css";
 import { lazy, Suspense } from "preact/compat";
-import { ArtworkSkeleton } from "../components/loading-states/ArtworkCardSkeleton";
+import { ArtworkCardSkeleton } from "../components/loading-states/ArtworkCardSkeleton";
 const ArtworkList = lazy(() => import("../components/ArtworkList"));
 
 export const Home = () => {
@@ -38,7 +38,7 @@ export const Home = () => {
             {Array(Number(limit) || 10)
               .fill(0)
               .map((_, index) => {
-                return <ArtworkSkeleton key={index} />;
+                return <ArtworkCardSkeleton key={index} />;
               })}
           </ul>
         }

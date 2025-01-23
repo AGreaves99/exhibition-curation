@@ -6,7 +6,7 @@ import "../styles/collections.css";
 import { ShowSidebarButton } from "../components/ShowSidebarButton";
 import { getSmkCollectionArtworks } from "../../api-calls/smk-api-calls";
 import { lazy, Suspense } from "preact/compat";
-import { ArtworkSkeleton } from "../components/loading-states/ArtworkCardSkeleton";
+import { ArtworkCardSkeleton } from "../components/loading-states/ArtworkCardSkeleton";
 const ArtworkList = lazy(() => import("../components/ArtworkList"));
 
 export const Collections = () => {
@@ -50,7 +50,7 @@ export const Collections = () => {
               {Array(userCollections.value[selectedCollection]?.artworks.length)
                 .fill(0)
                 .map((_, index) => {
-                  return <ArtworkSkeleton key={index} />;
+                  return <ArtworkCardSkeleton key={index} />;
                 })}
             </ul>
           }
