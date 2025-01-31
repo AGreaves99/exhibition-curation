@@ -97,9 +97,11 @@ export function getSmkCollectionArtworks(idArray = null) {
     });
   }
   const artworkPromises = idArray.map((id) => getSmkSingleArtwork(id));
-  return Promise.all(artworkPromises).then((artworks) => {
-    return {
-      data: artworks,
-    };
-  });
+  return Promise.all(artworkPromises)
+    .then((artworks) => {
+      return {
+        data: artworks,
+      };
+    })
+    .catch((error) => console.error(error));
 }
