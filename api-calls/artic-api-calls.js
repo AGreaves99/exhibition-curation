@@ -46,7 +46,6 @@ export function getArticArtworks(
           };
         }),
         totalPages: data.pagination.total_pages,
-        source: "artic",
       };
     })
     .catch((error) => console.error(error));

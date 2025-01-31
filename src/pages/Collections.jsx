@@ -1,4 +1,4 @@
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useErrorBoundary, useState } from "preact/hooks";
 import { userCollections } from "../../collectionSignal";
 import { CollectionSidebar } from "../components/CollectionSidebar";
 import { getArticCollectionArtworks } from "../../api-calls/artic-api-calls";
@@ -7,12 +7,14 @@ import { ShowSidebarButton } from "../components/ShowSidebarButton";
 import { getSmkCollectionArtworks } from "../../api-calls/smk-api-calls";
 import { lazy, Suspense } from "preact/compat";
 import { ArtworkCardSkeleton } from "../components/loading-states/ArtworkCardSkeleton";
+import { ErrorMessage } from "../components/ErrorMessage";
 const ArtworkList = lazy(() => import("../components/ArtworkList"));
 
 export const Collections = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(0);
   const [artworksData, setArtworksData] = useState([]);
+  const [error] = useErrorBoundary();
 
   const getArtworkIdsBySource = (source) =>
     userCollections.value[selectedCollection]?.artworks
@@ -43,10 +45,12 @@ export const Collections = () => {
         setSidebarVisible={setSidebarVisible}
         sidebarVisible={sidebarVisible}
       />
-      {userCollections.value[selectedCollection]?.artworks.length > 0 ? (
+      {error ? (
+        <ErrorMessage />
+      ) : userCollections.value[selectedCollection]?.artworks.length > 0 ? (
         <Suspense
           fallback={
-            <ul aria-busy="true" class="artwork-collection-list">
+            <ul aria-busy="true" className="artwork-collection-list">
               {Array(userCollections.value[selectedCollection]?.artworks.length)
                 .fill(0)
                 .map((_, index) => {
