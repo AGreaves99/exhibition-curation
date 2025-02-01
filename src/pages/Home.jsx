@@ -11,6 +11,7 @@ import "../styles/artworkCard.css";
 import { lazy, Suspense } from "preact/compat";
 import { ArtworkCardSkeleton } from "../components/loading-states/ArtworkCardSkeleton";
 import { ErrorMessage } from "../components/ErrorMessage";
+import { SearchContainer } from "../components/SearchContainer";
 const ArtworkList = lazy(() => import("../components/ArtworkList"));
 
 export const Home = () => {
@@ -30,10 +31,7 @@ export const Home = () => {
 
   return (
     <>
-      <ItemsPerPage />
-      <SourceDropdown />
-      <SearchBox />
-      <SortArtworks />
+      <SearchContainer />
       {error ? (
         <ErrorMessage />
       ) : (
