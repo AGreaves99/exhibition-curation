@@ -73,3 +73,12 @@
   background-color: #37966f;
   color: white;
 }
+
+.show {
+  margin: 0;
+  color: #37966f;
+}
+
+.hide {
+  display: none;
+}
