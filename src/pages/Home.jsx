@@ -1,12 +1,8 @@
 import { useEffect, useErrorBoundary, useState } from "preact/hooks";
 import { getArticArtworks } from "../../api-calls/artic-api-calls";
 import { getSmkArtworks } from "../../api-calls/smk-api-calls";
-import { ItemsPerPage } from "../components/ItemsPerPage";
-import { SearchBox } from "../components/SearchBox";
-import { SortArtworks } from "../components/SortDropdown";
 import { useLocation } from "preact-iso";
 import { Pagination } from "../components/Pagination";
-import { SourceDropdown } from "../components/SourceDropdown";
 import "../styles/artworkCard.css";
 import { lazy, Suspense } from "preact/compat";
 import { ArtworkCardSkeleton } from "../components/loading-states/ArtworkCardSkeleton";
@@ -15,7 +11,8 @@ import { SearchContainer } from "../components/SearchContainer";
 const ArtworkList = lazy(() => import("../components/ArtworkList"));
 
 export const Home = () => {
-  const { limit, search, sort_by, page, source } = useLocation().query;
+  const location = useLocation();
+  const { limit = "10", search, sort_by, page, source } = location.query;
   const [artworksData, setArtworksData] = useState({
     data: [],
     totalPages: 0,
@@ -25,6 +22,8 @@ export const Home = () => {
   useEffect(() => {
     const fetchArtworks = source === "smk" ? getSmkArtworks : getArticArtworks;
     fetchArtworks(limit, search, sort_by, page).then((data) => {
+      console.log(data);
+
       setArtworksData(data);
     });
   }, [useLocation().query]);
@@ -49,7 +48,9 @@ export const Home = () => {
           >
             <ArtworkList artworks={artworksData.data} />
           </Suspense>
-          <Pagination totalPages={artworksData.totalPages} />
+          <Pagination
+            totalPages={Math.min(1000 / Number(limit), artworksData.totalPages)}
+          />
         </>
       )}
     </>
