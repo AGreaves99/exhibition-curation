@@ -20,7 +20,7 @@ export function getSmkArtworks(
     .get("/art/search", {
       params: {
         keys: search || "*",
-        filters: "[public_domain:true]",
+        filters: "[has_image:true],[public_domain:true]",
         offset: (page - 1) * Number(limit),
         rows: limit,
         sort: sortOptions[sort] && sortOptions[sort][0],
