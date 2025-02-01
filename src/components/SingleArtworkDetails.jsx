@@ -41,20 +41,23 @@ const SingleArtworkDetails = () => {
       <h1 class="single-artwork-title">{artworkData.title}</h1>
       {artworkData.shortDescription && (
         <p class="single-artwork-description">
-          Description: {artworkData.shortDescription}
+          <span class="text-bold">Description:</span>{" "}
+          {artworkData.shortDescription}
         </p>
       )}
       <p class="single-artwork-artist">Artist: {artworkData.artist}</p>
       <p class="single-artwork-date">
-        Date:{" "}
+        <span class="text-bold">Date:</span>{" "}
         {artworkData.dateStart === artworkData.dateEnd
           ? artworkData.dateStart
           : `${artworkData.dateStart} - ${artworkData.dateEnd}`}
       </p>
       <p class="single-artwork-dimensions">
-        Dimensions: {artworkData.dimensions}
+        <span class="text-bold">Dimensions:</span> {artworkData.dimensions}
       </p>
-      <p class="single-artwork-medium">Medium: {artworkData.medium}</p>
+      <p class="single-artwork-medium">
+        <span class="text-bold">Medium:</span> {artworkData.medium}
+      </p>
       <AddToCollection artworkId={id} source={source} />
     </div>
   );
