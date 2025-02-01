@@ -14,15 +14,12 @@ export const Home = () => {
   const location = useLocation();
   const { limit = "10", search, sort_by, page, source } = location.query;
   const numLimit = Number(limit);
-  const maximumPages = 1000 / numLimit;
   const [artworksData, setArtworksData] = useState({
     data: [],
     totalPages: 0,
   });
   const [error] = useErrorBoundary();
   const [paramsError, setParamsError] = useState(false);
-
-  (Number(page) > maximumPages || numLimit >= 1000) && location.route("/");
 
   useEffect(() => {
     const fetchArtworks = source === "smk" ? getSmkArtworks : getArticArtworks;
@@ -32,8 +29,9 @@ export const Home = () => {
       })
       .catch((error) => {
         setParamsError(true);
+        location.route("/");
       });
-  }, [useLocation().query]);
+  }, [location]);
 
   return (
     <>
@@ -55,9 +53,7 @@ export const Home = () => {
           >
             <ArtworkList artworks={artworksData.data} />
           </Suspense>
-          <Pagination
-            totalPages={Math.min(maximumPages, artworksData.totalPages)}
-          />
+          <Pagination totalPages={artworksData.totalPages} />
         </>
       )}
     </>
