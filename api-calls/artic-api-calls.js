@@ -48,7 +48,10 @@ export function getArticArtworks(
         totalPages: data.pagination.total_pages,
       };
     })
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
 }
 
 export function getArticSingleArtwork(artId) {

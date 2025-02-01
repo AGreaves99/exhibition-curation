@@ -13,32 +13,39 @@ const ArtworkList = lazy(() => import("../components/ArtworkList"));
 export const Home = () => {
   const location = useLocation();
   const { limit = "10", search, sort_by, page, source } = location.query;
+  const numLimit = Number(limit);
+  const maximumPages = 1000 / numLimit;
   const [artworksData, setArtworksData] = useState({
     data: [],
     totalPages: 0,
   });
   const [error] = useErrorBoundary();
+  const [paramsError, setParamsError] = useState(false);
+
+  (Number(page) > maximumPages || numLimit >= 1000) && location.route("/");
 
   useEffect(() => {
     const fetchArtworks = source === "smk" ? getSmkArtworks : getArticArtworks;
-    fetchArtworks(limit, search, sort_by, page).then((data) => {
-      console.log(data);
-
-      setArtworksData(data);
-    });
+    fetchArtworks(limit, search, sort_by, page)
+      .then((data) => {
+        setArtworksData(data);
+      })
+      .catch((error) => {
+        setParamsError(true);
+      });
   }, [useLocation().query]);
 
   return (
     <>
       <SearchContainer />
-      {error ? (
+      {error || paramsError ? (
         <ErrorMessage />
       ) : (
         <>
           <Suspense
             fallback={
               <ul aria-busy="true" class="artwork-list">
-                {Array(Number(limit) || 10)
+                {Array(numLimit || 10)
                   .fill(0)
                   .map((_, index) => {
                     return <ArtworkCardSkeleton key={index} />;
@@ -49,7 +56,7 @@ export const Home = () => {
             <ArtworkList artworks={artworksData.data} />
           </Suspense>
           <Pagination
-            totalPages={Math.min(1000 / Number(limit), artworksData.totalPages)}
+            totalPages={Math.min(maximumPages, artworksData.totalPages)}
           />
         </>
       )}
