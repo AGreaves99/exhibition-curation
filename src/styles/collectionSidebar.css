@@ -14,6 +14,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   display: block;
+  color: inherit;
 }
 
 .collection-button {
