@@ -21,12 +21,12 @@ export const SortArtworks = () => {
   };
 
   return (
-    <div>
+    <div class="dropdown-container">
       <label for="sort-select">Sort By: </label>
       <select
         name="sort"
         id="sort-select"
-        class="sort-select"
+        class="search-dropdown"
         onInput={handleSortChange}
         value={location.query.sort_by || ""}
       >

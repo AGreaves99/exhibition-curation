@@ -14,10 +14,10 @@ export const ItemsPerPage = () => {
     location.route("/?" + params.toString());
   };
   return (
-    <form class="items-per-page-container">
+    <form class="dropdown-container">
       <label for="items-per-page">Items Per Page: </label>
       <select
-        class="items-per-page"
+        class="search-dropdown"
         id="items-per-page"
         value={location.query.limit || 10}
         onInput={handleChange}
