@@ -51,4 +51,10 @@
   cursor: pointer;
   border-radius: 5px;
   border: 1px solid #222;
+  transition: all 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #37966f;
+  color: white;
 }
