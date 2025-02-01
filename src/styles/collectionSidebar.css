@@ -6,6 +6,7 @@
 }
 
 .collection-input {
+  background: transparent;
   width: 90%;
   padding: 10px;
   margin: auto;
@@ -13,12 +14,13 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   display: block;
+  color: inherit;
 }
 
 .collection-button {
   width: 100%;
   padding: 10px;
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
   background-color: #007bff;
   color: white;
   border: none;
@@ -28,7 +30,7 @@
 
 .collection-button:disabled {
   background-color: #ccc;
-  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .collection-item {

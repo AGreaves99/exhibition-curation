@@ -8,20 +8,77 @@
   font-size: 2em;
   margin-bottom: 1em;
   font-weight: 700;
+  max-width: 75vw;
+  margin-inline: auto;
 }
 
 .single-artwork-image {
   display: block;
-  max-width: 100%;
+  max-width: 75vw;
   height: auto;
   border: none;
+  margin: auto;
 }
 
 .single-artwork-container > p {
   font-size: 1em;
   margin: 10px 0;
+  max-width: 75vw;
+  margin-inline: auto;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 .single-artwork-artist {
   font-weight: bold;
+}
+
+.add-to-collection-container {
+  max-width: 75vw;
+  margin: auto;
+}
+
+.add-to-collection-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: sans-serif;
+  font-size: 1em;
+  color: #222;
+}
+
+.collection-select {
+  background: transparent;
+  font-size: 0.875em;
+  color: inherit;
+  padding: 0.2em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-to-collection-button {
+  background: transparent;
+  font-size: 0.875em;
+  color: inherit;
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #222;
+  transition: all 0.3s ease;
+}
+
+.add-to-collection-button:hover {
+  background-color: #37966f;
+  color: white;
+}
+
+.show {
+  margin: 0;
+  color: #37966f;
+}
+
+.hide {
+  display: none;
 }

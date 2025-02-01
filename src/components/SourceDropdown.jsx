@@ -19,12 +19,12 @@ export const SourceDropdown = () => {
   };
 
   return (
-    <div>
+    <div class="dropdown-container">
       <label for="source-select">Source: </label>
       <select
         name="source"
         id="source-select"
-        class="source-select"
+        class="search-dropdown"
         onInput={handleSourceChange}
         value={location.query.source || "artic"}
       >

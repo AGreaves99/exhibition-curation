@@ -1,19 +1,29 @@
-header {
-  padding: 20px;
-  border-bottom: 2px solid #aaaaaa;
+.header {
+  background-color: #333;
+  padding: 1rem;
+  color: white;
+  text-align: center;
 }
 
-header nav {
+.nav {
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
+  align-items: center;
+  width: 80%;
+  margin: auto;
 }
 
-header nav a {
-  margin: 0 15px;
+.nav a {
+  color: white;
   text-decoration: none;
+  font-size: 1.25em;
+  margin: 1.25em;
 }
 
-header nav a:hover {
-  text-decoration: underline;
+.nav a.active {
+  border-bottom: 2px solid #fff;
+}
+
+.nav a:hover {
+  border-bottom: 2px solid #fff;
 }

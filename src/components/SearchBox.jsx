@@ -20,16 +20,19 @@ export const SearchBox = () => {
   };
 
   return (
-    <div>
+    <div class="searchbox-container">
       <label for="search">Search artworks: </label>
       <input
         id="search"
+        class="searchbox"
         type="text"
         value={query}
         onInput={handleChange}
         placeholder="Search..."
       />
-      <button onClick={handleSearch}>Search</button>
+      <button class="search-button" onClick={handleSearch}>
+        Search
+      </button>
     </div>
   );
 };
