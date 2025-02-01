@@ -1,11 +1,50 @@
-# `create-preact`
+# Exhibition Curation
 
-<h3 align="center">Get started using Preact and Vite!</h3>
+This is a web-based platform designed to allow users to browse artworks, view artwork details and add them to collections. This project was built using preact and interacts with data from the [Art Insitute of Chicago](https://api.artic.edu/docs/) and the [National Gallery of Denmark](https://www.smk.dk/article/smk-api/) to display information about artworks.
 
-## Getting Started
+## Features
 
-- `npm run dev` - Starts a dev server at http://localhost:5173/
+- View a list of artworks
+- Search artworks and sort results
+- View individual artwork details
+- Create, view and add artworks to user collections
 
-- `npm run build` - Builds for production, emitting to `dist/`
+## Setup
 
-- `npm run preview` - Starts a server at http://localhost:4173/ to test production build locally
+### Prerequisites
+
+Ensure you have the following installed:
+
+- npm (^10.9.2)
+- Node.js (^v23.6.0)
+
+### Installation
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/AGreaves99/exhibition-curation.git
+   cd exhibition-curation
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+Start the development server with:
+
+```bash
+npm run dev
+```
+
+Then, open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the application.
+
+For production, use:
+
+```bash
+npm run build
+```
