@@ -5,8 +5,8 @@ export const Header = () => {
   const { url } = useLocation();
 
   return (
-    <header>
-      <nav>
+    <header class="header">
+      <nav class="nav">
         <a href="/" class={url == "/" && "active"}>
           Home
         </a>
