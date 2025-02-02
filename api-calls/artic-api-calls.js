@@ -102,7 +102,7 @@ export function getArticCollectionArtworks(idArray = null) {
             artistTitle: artwork.artist_title,
             hasImage: !!artwork.image_id,
             altText: artwork.thumbnail?.alt_text || data.data.title,
-            iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
+            iiifUrl: `${data.config.iiif_url}/${artwork.image_id}/full/400,/0/default.jpg`,
             source: "artic",
             uniqueId: `artic-${artwork.id}`,
           };
