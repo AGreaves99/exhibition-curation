@@ -1,5 +1,5 @@
 .single-artwork-container {
-  max-width: 843px;
+  max-width: 60vw;
   margin: 5em auto;
   color: #222;
 }
@@ -14,7 +14,7 @@
 
 .single-artwork-image {
   display: block;
-  max-width: 75vw;
+  max-width: 60vw;
   height: auto;
   border: none;
   margin: auto;
