@@ -16,6 +16,8 @@ export const SearchBox = () => {
     } else {
       params.set("search", query);
     }
+    params.delete("sort_by");
+    params.delete("page");
     location.route("/?" + params.toString());
   };
 
