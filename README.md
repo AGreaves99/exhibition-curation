@@ -2,6 +2,8 @@
 
 This is a web-based platform designed to allow users to browse artworks, view artwork details and add them to collections. This project was built using preact and interacts with data from the [Art Insitute of Chicago](https://api.artic.edu/docs/) and the [National Gallery of Denmark](https://www.smk.dk/article/smk-api/) to display information about artworks.
 
+A link to the hosted site can be found [here](https://agreaves99-exhib-curation.netlify.app/)
+
 ## Features
 
 - View a list of artworks
