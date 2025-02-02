@@ -32,17 +32,16 @@ const SingleArtworkDetails = () => {
     <div aria-busy="false" class="single-artwork-container">
       <img
         class="single-artwork-image"
-        src={
-          artworkData.hasImage &&
-          `${artworkData.iiifUrl}/full/843,/0/default.jpg`
-        }
+        src={artworkData.hasImage && `${artworkData.iiifUrl}`}
         alt={artworkData.altText || artworkData.title}
       />
       <h1 class="single-artwork-title">{artworkData.title}</h1>
       {artworkData.shortDescription && (
-        <p class="single-artwork-description">
+        <p
+          class="single-artwork-description"
+          dangerouslySetInnerHTML={{ __html: artworkData.shortDescription }}
+        >
           <span class="text-bold">Description:</span>{" "}
-          {artworkData.shortDescription}
         </p>
       )}
       <p class="single-artwork-artist">Artist: {artworkData.artist}</p>

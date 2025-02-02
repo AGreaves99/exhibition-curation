@@ -70,12 +70,10 @@ export const Collections = () => {
             />
           </Suspense>
         ) : (
-          <ArtworkList
-            artworks={artworksData}
-            selectedCollection={selectedCollection}
-            setArtworksData={setArtworksData}
-            showButton={true}
-          />
+          <p class="no-artworks">
+            Create a collection using the sidebar or add to an existing
+            collection to view artworks.
+          </p>
         )}
       </div>
     </div>

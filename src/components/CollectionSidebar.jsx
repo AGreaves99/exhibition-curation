@@ -25,6 +25,9 @@ export const CollectionSidebar = ({
   return (
     <div class={`collection-sidebar ${sidebarVisible ? "visible" : ""}`}>
       <h2 class="collection-title">Collections</h2>
+      <label class="collection-label" for="collectionName">
+        Create Collection:{" "}
+      </label>
       <input
         type="text"
         id="collectionName"
@@ -37,7 +40,7 @@ export const CollectionSidebar = ({
         disabled={!newCollectionName}
         class="collection-button"
       >
-        Create Collection
+        Create
       </button>
       <div class="collection-list">
         {userCollections.value.map((collection, index) => {

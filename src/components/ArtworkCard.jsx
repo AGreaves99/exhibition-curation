@@ -15,7 +15,7 @@ const ArtworkCard = ({
     <div className="artwork-card">
       <a href={`/${source}/${encodedId}`} className="artwork-link">
         <img
-          src={hasImage && `${iiifUrl}/full/400,/0/default.jpg`}
+          src={hasImage && iiifUrl}
           alt={altText}
           className="artwork-image"
         />

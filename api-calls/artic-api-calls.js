@@ -41,7 +41,7 @@ export function getArticArtworks(
             artistTitle: artwork.artist_title,
             hasImage: !!artwork.image_id,
             altText: data.data.thumbnail?.alt_text || artwork.title,
-            iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
+            iiifUrl: `${data.config.iiif_url}/${artwork.image_id}/full/400,/0/default.jpg`,
             source: "artic",
           };
         }),
@@ -67,7 +67,7 @@ export function getArticSingleArtwork(artId) {
         title: data.data.title,
         artist: data.data.artist_title,
         hasImage: !!data.data.image_id,
-        iiifUrl: `${data.config.iiif_url}/${data.data.image_id}`,
+        iiifUrl: `${data.config.iiif_url}/${data.data.image_id}/full/843,/0/default.jpg`,
         altText: data.data.thumbnail?.alt_text || data.data.title,
         dimensions: data.data.dimensions,
         medium: data.data.medium_display,
@@ -102,7 +102,7 @@ export function getArticCollectionArtworks(idArray = null) {
             artistTitle: artwork.artist_title,
             hasImage: !!artwork.image_id,
             altText: artwork.thumbnail?.alt_text || data.data.title,
-            iiifUrl: `${data.config.iiif_url}/${artwork.image_id}`,
+            iiifUrl: `${data.config.iiif_url}/${artwork.image_id}/full/400,/0/default.jpg`,
             source: "artic",
             uniqueId: `artic-${artwork.id}`,
           };
