@@ -1,5 +1,18 @@
 .collection {
   display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.show-sidebar-button {
+  align-self: flex-start;
+  margin: 1em;
 }
 
 .artwork-collection-list {
