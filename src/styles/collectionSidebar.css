@@ -5,6 +5,10 @@
   min-height: 100vh;
 }
 
+.collection-label {
+  margin: 10px;
+}
+
 .collection-input {
   background: transparent;
   width: 90%;
