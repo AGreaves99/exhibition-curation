@@ -38,7 +38,9 @@ export function getSmkArtworks(
             title: `${title1}${title2 ? `, ${title2}` : ""}`,
             artistTitle: artwork?.artist?.[0] || "Unknown Artist",
             hasImage: artwork.has_image,
-            iiifUrl: artwork.image_iiif_id,
+            iiifUrl: artwork.image_iiif_id
+              ? `${artwork.image_iiif_id}/full/400,/0/default.jpg`
+              : artwork.image_thumbnail,
             altText: `${title1}${title2 ? `, ${title2}` : ""}`,
             source: "smk",
           };
@@ -62,18 +64,20 @@ export function getSmkSingleArtwork(artId) {
       const artwork = data.items[0];
       const title1 = artwork?.titles?.[0]?.title || "No title";
       const title2 = artwork?.titles?.[1]?.title || "";
-      const dimensions = `${artwork.dimensions[0].value} x ${
-        artwork.dimensions[1].value
-      } ${artwork.dimensions?.[2] ? ` x ${artwork.dimensions[2].value}` : ""} ${
-        artwork.dimensions[0].unit
-      }`;
+      const dimensions = artwork.dimensions
+        ? `${artwork.dimensions[0].value} x ${artwork.dimensions[1].value} ${
+            artwork.dimensions?.[2] ? ` x ${artwork.dimensions[2].value}` : ""
+          } ${artwork.dimensions[0].unit}`
+        : "Unknown";
 
       return {
         id: artwork.object_number,
         title: `${title1}${title2 ? `, ${title2}` : ""}`,
         artist: artwork?.artist?.[0] || "Unknown Artist",
         hasImage: artwork.has_image,
-        iiifUrl: artwork.image_iiif_id,
+        iiifUrl: artwork.image_iiif_id
+          ? `${artwork.image_iiif_id}/full/843,/0/default.jpg`
+          : artwork.image_thumbnail,
         altText: `${title1}${title2 ? `, ${title2}` : ""}`,
         dimensions: dimensions,
         medium:
