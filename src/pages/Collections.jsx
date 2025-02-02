@@ -41,39 +41,43 @@ export const Collections = () => {
         setSelectedCollection={setSelectedCollection}
         sidebarVisible={sidebarVisible}
       />
-      <ShowSidebarButton
-        setSidebarVisible={setSidebarVisible}
-        sidebarVisible={sidebarVisible}
-      />
-      {error ? (
-        <ErrorMessage />
-      ) : userCollections.value[selectedCollection]?.artworks.length > 0 ? (
-        <Suspense
-          fallback={
-            <ul aria-busy="true" className="artwork-collection-list">
-              {Array(userCollections.value[selectedCollection]?.artworks.length)
-                .fill(0)
-                .map((_, index) => {
-                  return <ArtworkCardSkeleton key={index} />;
-                })}
-            </ul>
-          }
-        >
+      <div class="content-container">
+        <ShowSidebarButton
+          setSidebarVisible={setSidebarVisible}
+          sidebarVisible={sidebarVisible}
+        />
+        {error ? (
+          <ErrorMessage />
+        ) : userCollections.value[selectedCollection]?.artworks.length > 0 ? (
+          <Suspense
+            fallback={
+              <ul aria-busy="true" className="artwork-collection-list">
+                {Array(
+                  userCollections.value[selectedCollection]?.artworks.length
+                )
+                  .fill(0)
+                  .map((_, index) => {
+                    return <ArtworkCardSkeleton key={index} />;
+                  })}
+              </ul>
+            }
+          >
+            <ArtworkList
+              artworks={artworksData}
+              selectedCollection={selectedCollection}
+              setArtworksData={setArtworksData}
+              showButton={true}
+            />
+          </Suspense>
+        ) : (
           <ArtworkList
             artworks={artworksData}
             selectedCollection={selectedCollection}
             setArtworksData={setArtworksData}
             showButton={true}
           />
-        </Suspense>
-      ) : (
-        <ArtworkList
-          artworks={artworksData}
-          selectedCollection={selectedCollection}
-          setArtworksData={setArtworksData}
-          showButton={true}
-        />
-      )}
+        )}
+      </div>
     </div>
   );
 };
