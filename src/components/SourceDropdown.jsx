@@ -15,6 +15,7 @@ export const SourceDropdown = () => {
     } else {
       params.delete("source");
     }
+    params.delete("page");
     location.route("/?" + params.toString());
   };
 
