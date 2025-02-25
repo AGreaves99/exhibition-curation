@@ -4,6 +4,8 @@ This is a web-based platform designed to allow users to browse artworks, view ar
 
 A link to the hosted site can be found [here](https://agreaves99-exhib-curation.netlify.app/)
 
+This project is front-end only, and so the user made collections will not persist across sessions.
+
 ## Features
 
 - View a list of artworks
