@@ -12,7 +12,7 @@ const ArtworkCard = ({
 }) => {
   const encodedId = encodeURIComponent(id);
   return (
-    <div className="artwork-card">
+    <li className="artwork-card">
       <a href={`/${source}/${encodedId}`} className="artwork-link">
         <img
           src={hasImage && iiifUrl}
@@ -25,7 +25,7 @@ const ArtworkCard = ({
         </div>
       </a>
       <div className="artwork-children">{children}</div>
-    </div>
+    </li>
   );
 };
 

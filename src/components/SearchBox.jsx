@@ -21,6 +21,10 @@ export const SearchBox = () => {
     location.route("/?" + params.toString());
   };
 
+  const handleKeyUp = (event) => {
+    event.key === "Enter" && handleSearch()
+  }
+
   return (
     <div class="searchbox-container">
       <label for="search">Search artworks: </label>
@@ -30,6 +34,7 @@ export const SearchBox = () => {
         type="text"
         value={query}
         onInput={handleChange}
+        onKeyUp={handleKeyUp}
         placeholder="Search..."
       />
       <button class="search-button" onClick={handleSearch}>
